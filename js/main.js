@@ -17,7 +17,7 @@ Scope
   "use strict";
 
   var x = "I'm a local variable";
-  console.log(y)
+  // console.log(y)
 
   function scopeThis(){
     var y = "I'm a global variable";
@@ -60,7 +60,7 @@ Hoisting
 /*************************************************************************************
 ------------ ANSWER -------------------
 x is undefined. It's been declared by hoisting, but undefined.
-foo() will print functio hoisting.
+foo() will print function hoisting.
 **************************************************************************************/
 
 
@@ -78,7 +78,8 @@ Date Object
   "use strict";
   let todayIs = new Date('June 12, 2017');
   console.assert(todayIs == today, "#3 Test failed. Did you set the date correctly?");
-})(testerOne);
+});
+// (testerOne);
 
 
 
@@ -118,9 +119,9 @@ Hoisting
 **************************************************************************************/
 (function(){
   "use strict";
-  var date = new Date(1983, 04, 21);
   var birthday;
-  var bdayMsg = function(){
+  var date = new Date(1983, 3, 21);
+  function bdayMsg(){
     return "You were born on " + date.toDateString();
   }
   bdayMsg();
@@ -142,10 +143,11 @@ Date object
 (function(testerTwo){
   "use strict";
   var today = new Date();
-  let stringDate = new Date('June 12, 2017');
+  let stringDate = today.toString();
   console.log("#6 stringDate", stringDate)
   console.assert(stringDate == testerTwo, "#6 Test Failed. Did you set stringDate correctly?")
-})(testerTwo);
+});
+// (testerTwo);
 
 
 
@@ -167,12 +169,8 @@ Hoisting
 (function(){
   "use strict";
 
-
-
   var pizza = {
     sauce: true,
-    sauceType:'tomato'
-    protien: 'chicken'
     orderNow: true,
     pizzaMkr: function(){
       if (pizza.orderNow == true && pizza.sauce == true){
@@ -182,7 +180,11 @@ Hoisting
         return "We only make traditional pizzas. You gotta add some sauce!"
       }
     }
+
   }
+
+  pizza.protein = 'chicken';
+  pizza.sauceType = 'tomato';
   pizza.pizzaMkr();
   console.log("# 7 pizza.pizzaMrk()", pizza.pizzaMkr());
   console.assert(pizza.pizzaMkr() == "We are making your pizza with tomato and chicken. Pickup in 20 minutes.", "#7 Test failed. Did you add the propeties? Did you set the values correctly? Did you fix the hoisting issues?")
@@ -223,6 +225,8 @@ HINTS:
 
   var accountCheck = function() {
     name = 'James';
+    goodStanding = true;
+    monthsActive = 18;
     var greeting = function() {
 
       return "Hello " + name + ". Here is the status of your account."
@@ -260,7 +264,7 @@ HINTS:
       }
     }
     //Here 'accountCheck' should return both the 'greeting' output and the 'accountStat' output.
-    return accountCheck() + accountStat();
+    return greeting() + accountStat();
   }
 
   accountCheck();
