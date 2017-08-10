@@ -26,7 +26,8 @@ Scope
   scopeThis();
 })();
 /*************************************************************************************
------------- ANSWER -------------------  console.log(y); Will return an error because it is not within the global scope of the whole function.
+------------ ANSWER -------------------
+console.log(y); Will return an error because it is not within the global scope of the whole function.
 console.log(x); Will return x's value because it is in the global scope of the main function.
 No, the variables are there to trick me!
 **************************************************************************************/
@@ -76,7 +77,7 @@ Date Object
 **************************************************************************************/
 (function(testerOne){
   "use strict";
-  let todayIs = new Date('June 12, 2017');
+  let todayIs = new Date('2017, 5, 12');
   console.assert(todayIs == today, "#3 Test failed. Did you set the date correctly?");
 });
 // (testerOne);
@@ -143,8 +144,8 @@ Date object
 (function(testerTwo){
   "use strict";
   var today = new Date();
-  let stringDate = today.toString();
-  console.log("#6 stringDate", stringDate)
+  let stringDate = "June 12, 2017";
+  console.log("#6 stringDate", stringDate);
   console.assert(stringDate == testerTwo, "#6 Test Failed. Did you set stringDate correctly?")
 });
 // (testerTwo);
@@ -214,22 +215,20 @@ HINTS:
 (function() {
   "use strict";
 
-  var goodStanding = false;
-  var monthsActive = 2;
+  var goodStanding = true;
+  var monthsActive = 18;
 
   //Do not modify 'name' globaly.
   var name = null 
 
   var benefit = {credit:50, discount:5};
   //Add properties to 'benefit' using braket notation
-
-  var accountCheck = function() {
+  accountCheck();
+   function accountCheck() {
     name = 'James';
-    goodStanding = true;
-    monthsActive = 18;
-    var greeting = function() {
+      function greeting() {
 
-      return "Hello " + name + ". Here is the status of your account."
+      return "Hello " + name + ". Here is the status of your account. "
     }
 
     function accountStat() {
@@ -267,7 +266,7 @@ HINTS:
     return greeting() + accountStat();
   }
 
-  accountCheck();
+
 
   console.log("#8 accountCheck():", accountCheck());
   console.assert(name == "James", "Test failed. You should set 'name' to 'james' from within accountCheck()");
@@ -286,11 +285,11 @@ Compartmentalization
 **************************************************************************************/
 (function() {
   "use strict";
-  let multiply = 2 * 8;;;
+  var multiply = 2 * 8;
 
-  (function duplicate() {
-    multiply = 2 * 10;
-  })();
+  function duplicate() {
+    var multiply = 2 * 10;
+  }
 
   duplicate();
 
