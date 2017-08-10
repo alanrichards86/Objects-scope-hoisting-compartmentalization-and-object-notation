@@ -218,7 +218,7 @@ HINTS:
   var monthsActive = 2;
 
   //Do not modify 'name' globaly.
-  var name = null;
+  var name = null 
 
   var benefit = {credit:50, discount:5};
   //Add properties to 'benefit' using braket notation
@@ -286,7 +286,7 @@ Compartmentalization
 **************************************************************************************/
 (function() {
   "use strict";
-  let multiply = 2 * 8;
+  let multiply = 2 * 8;;;
 
   (function duplicate() {
     multiply = 2 * 10;
